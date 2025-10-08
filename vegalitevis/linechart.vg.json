@@ -1,0 +1,126 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 800,
+  "height": 450,
+  "title": "Carbon Dioxide Emissions per Capita by Sector from the Top 10 Highest Emitting Countries per Capita",
+  "config": {
+    "font": "Helvetica",
+    "background": "#ecebe4"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/22kahz/FIT3179-Week-10-Homework/refs/heads/main/vegalitevis/data/per-capita-co2-sector.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.Entity == country_select"
+    },
+    {
+      "fold": [
+        "Per capita carbon dioxide emissions from buildings",
+        "Per capita carbon dioxide emissions from electricity and heat",
+        "Per capita fugitive emissions of carbon dioxide from energy production",
+        "Per capita carbon dioxide emissions from industry",
+        "Per capita carbon dioxide emissions from bunker fuels",
+        "Per capita carbon dioxide emissions from land-use change and forestry",
+        "Per capita carbon dioxide emissions from transport",
+        "Per capita carbon dioxide emissions from manufacturing and construction",
+        "Per capita carbon dioxide emissions from other fuel combustion"
+      ],
+      "as": ["Sector", "Emissions"]
+    },
+    {
+      "calculate": "datum.Sector == 'Per capita carbon dioxide emissions from buildings' ? 'Buildings' :\n datum.Sector == 'Per capita carbon dioxide emissions from electricity and heat' ? 'Electricity and Heat' :\n datum.Sector == 'Per capita fugitive emissions of carbon dioxide from energy production' ? 'Fugitive Emissions' :\n datum.Sector == 'Per capita carbon dioxide emissions from industry' ? 'Industry' :\n datum.Sector == 'Per capita carbon dioxide emissions from bunker fuels' ? 'Bunker Fuels' :\n datum.Sector == 'Per capita carbon dioxide emissions from land-use change and forestry' ? 'Land-use Change and Forestry' :\n datum.Sector == 'Per capita carbon dioxide emissions from transport' ? 'Transport' :\n datum.Sector == 'Per capita carbon dioxide emissions from manufacturing and construction' ? 'Manufacturing and Construction' :\n datum.Sector == 'Per capita carbon dioxide emissions from other fuel combustion' ? 'Other Fuel Combustion' : datum.Sector",
+      "as": "ShortSector"
+    }
+  ],
+  "params": [
+    {
+      "name": "country_select",
+      "value": "Australia",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Qatar",
+          "Bahrain",
+          "Brunei",
+          "Kuwait",
+          "United Arab Emirates",
+          "Saudi Arabia",
+          "Oman",
+          "Australia",
+          "United States",
+          "Canada"
+        ],
+        "name": "Select Country: "
+      }
+      
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line"
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "temporal", "axis": { "grid": false } },
+        "y": {
+          "field": "Emissions",
+          "type": "quantitative",
+          "title": "Emissions (tonnes per capita)"
+        },
+        "color": {
+          "field": "ShortSector",
+          "type": "nominal",
+          "legend": { "title": "Sector" }
+        }
+      }
+    },
+    {
+      "params": [
+        {
+          "name": "point_highlight",
+          "select": {
+            "type": "point",
+            "on": "mouseover",
+            "nearest": true,
+            "fields": ["Year", "ShortSector"]
+          }
+        }
+      ],
+      "mark": { "type": "point", "filled": true },
+      "encoding": {
+        "x": { "field": "Year", "type": "temporal" },
+        "y": {
+          "field": "Emissions",
+          "type": "quantitative",
+          "title": "Emissions (tonnes per capita)"
+        },
+        "color": {
+          "field": "ShortSector",
+          "type": "nominal",
+          "legend": { "title": "Sector" }
+        },
+        "size": {
+          "condition": { "param": "point_highlight", "value": 60 },
+          "value": 20
+        },
+        "opacity": { "value": 1 },
+        "tooltip": [
+          {
+            "field": "Year",
+            "type": "temporal",
+            "title": "Year",
+            "format": "%Y"
+          },
+          { "field": "ShortSector", "type": "nominal", "title": "Sector" },
+          {
+            "field": "Emissions",
+            "type": "quantitative",
+            "title": "Emissions (tonnes per capita)",
+            "format": ",.2f"
+          }
+        ]
+      }
+    }
+  ]
+}

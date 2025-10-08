@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <script src="vega_lite_vis.js"></script>
+    <title>FIT3179 Week 10 Homework</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="grid">
+      <div class="item">
+        <div class="group">
+          <h2 class="text">CO₂ Emissions Around the World 2023</h2>
+          <p class="text">
+            Small, wealthy countries like Qatar have the highest per capita
+            emissions whereas large countries such as China are the top
+            contributors to total emissions but their per capita emissions vary.
+          </p>
+          <p class="text">
+            Developed countries like Australia have high per capita emissions.
+          </p>
+        </div>
+      </div>
+      <div class="item" id="map"></div>
+      <div class="item">
+        <div class="group">
+          <h2 class="text">
+            Sector Emissions of the Top 10 Emitting Countries
+          </h2>
+          <p class="text">
+            The top 10 per capita emitters are mostly small, wealthy countries
+            or developed countries.
+          </p>
+          <p class="text">
+            The electricity and heat sector is typically the largest contributor
+            to per capita CO₂ emissions, followed by transport and industry.
+          </p>
+          <p class="text">
+            Australia, the US, and Canada also have high per capita emissions,
+            with significant contributions from transport and industry, due to
+            large land areas, high car ownership, and resource-based industries.
+            In some cases, Land-use change and forestry emissions are negative,
+            showing the benefits of reforestation.
+          </p>
+        </div>
+      </div>
+      <div class="item" id="linechart"></div>
+    </div>
+  </body>
+</html>

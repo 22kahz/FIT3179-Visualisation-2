@@ -4,8 +4,13 @@
   "height": 450,
   "title": "Carbon Dioxide Emissions per Capita by Country 2023",
   "config": {
-    "font": "Helvetica",
-    "background": "#ecebe4"
+    "font": "Lexend Deca",
+    "background": "#ecebe4",
+    "style": {
+    "cell": {
+      "stroke": "transparent"
+    }
+  }
   },
   "projection": { "type": "equalEarth" },
   "layer": [
@@ -102,23 +107,6 @@
         "format": { "type": "topojson", "feature": "ne_110m_graticules_30" }
       },
       "mark": { "type": "geoshape", "fill": null, "stroke": "gray" }
-    },
-    {
-      "data": { "values": [{}] },
-      "mark": {
-        "type": "rect",
-        "x": 580,
-        "y": 350,
-        "width": 175,
-        "height": 25,
-        "fill": "#EBD614",
-        "opacity": 0.8
-      }
-    },
-    {
-      "data": { "values": [{ "text": "Australia Ranks Number 8" }] },
-      "mark": { "type": "text", "x": 580, "y": 350, "align": "center", "baseline": "middle", "fontSize": 13, "font": "Helvetica", "fill": "black", "fontWeight": "bold"},
-      "encoding": { "text": { "field": "text" } }
     }
   ]
 }

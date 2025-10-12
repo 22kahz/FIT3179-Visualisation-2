@@ -9,46 +9,108 @@
     <script src="vega_lite_vis.js"></script>
     <title>FIT3179 Week 10 Homework</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
   </head>
-  <body>
+<body>
+
+  <!-- <header>
+    <nav>
+      <h2>MyBrand</h2>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header> -->
+
+  <section class="title-section">
+    <h1>Australia's Net Zero Progress</h1>
+    <h2 class="title-subtext">Is Australia on Track for <span class="highlight">Net Zero by 2050?</span></h2>
+  </section>
+  <hr></hr>
+
+  <section class="content-section">
     <div class="grid">
-      <div class="item">
-        <div class="group">
-          <h2 class="text">CO₂ Emissions Around the World 2023</h2>
-          <p class="text">
-            Small, wealthy countries like Qatar have the highest per capita
-            emissions whereas large countries such as China are the top
-            contributors to total emissions but their per capita emissions vary.
-          </p>
-          <p class="text">
-            Developed countries like Australia have high per capita emissions.
-          </p>
-        </div>
-      </div>
-      <div class="item" id="map"></div>
-      <div class="item">
-        <div class="group">
-          <h2 class="text">
-            Sector Emissions of the Top 10 Emitting Countries
-          </h2>
-          <p class="text">
-            The top 10 per capita emitters are mostly small, wealthy countries
-            or developed countries.
-          </p>
-          <p class="text">
-            The electricity and heat sector is typically the largest contributor
-            to per capita CO₂ emissions, followed by transport and industry.
-          </p>
-          <p class="text">
-            Australia, the US, and Canada also have high per capita emissions,
-            with significant contributions from transport and industry, due to
-            large land areas, high car ownership, and resource-based industries.
-            In some cases, Land-use change and forestry emissions are negative,
-            showing the benefits of reforestation.
-          </p>
-        </div>
-      </div>
-      <div class="item" id="linechart"></div>
+      <h2>Against Other Countries</h2>
+      <p>
+        In 2015, Australia joined over 190 countries in signing the Paris Agreement, striving to achieve net zero emissions by 2050.
+      </p>
     </div>
-  </body>
+    <div class="grid">
+      <div class="two-columns">      
+        <p class="content">Australia ranks number 8 in highest carbon dioxide emissions per capita in 2023. Small, wealthy countries like Qatar have the highest per capita emissions whereas large countries such as China are the top contributors to total emissions but their per capita emissions vary.</p>
+        <script class="content" id="map"></script>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="grid">
+      <h2>Current Progress</h2>
+      <p>
+         Australia targeted to reduce emissions by 43% on 2005 levels by 2030 and 62-70% on 2005 levels by 2035 as their step to a net zero emission by 2050.
+      </p>
+    </div>
+    <div class="grid">
+      <div class="two-columns">      
+        <p class="content">text</p>
+        <script class="content" id="emissiontarget"></script>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="grid">
+      <h2>Temperature Anomalies</h2>
+      <p>
+        How different temperatures has been from the average
+      </p>
+    </div>
+    <div class="grid">
+      <div class="two-columns">      
+        <p class="content">text</p>
+        <script class="content" id="temperature"></script>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="grid">
+      <h2>Emissions by sector</h2>
+      <p>
+        Which sector is producing the most emissions
+      </p>
+    </div>
+    <div class="grid">
+      <div class="two-columns">      
+        <p class="content">text</p>
+        <script class="content" id="sector"></script>
+      </div>
+    </div>
+  </section>
+
+    <section class="content-section">
+    <div class="grid">
+      <h2>Emissions by gas</h2>
+      <p>
+        Which gas is being produced
+      </p>
+    </div>
+    <div class="grid">
+      <div class="two-columns">      
+        <p class="content">text</p>
+        <script class="content" id="emissionsbygas"></script>
+      </div>
+    </div>
+  </section>
+
+  <!-- <footer>
+    <p>&copy; 2025 My Website | Built with ❤️ and CSS</p>
+  </footer> fill in with info later--> 
+
+</body>
 </html>

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": { "url": "/data/emissionsbygas.csv" },
+  "width": 800,
+  "height": 450,
+  "mark": "line",
+    "config": {
+    "font": "Helvetica",
+    "background": "#ecebe4"
+  },
+  "transform": [
+    {
+      "fold": [
+        "CO2 emissions (trend)",
+        "CH4 emissions (trend)",
+        "N2O emissions (trend)",
+        "Other emissions (trend)"
+      ],
+      "as": ["Gas", "Emissions"]
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Quarter",
+      "type": "nominal",
+      "axis": { "title": "Quarter" }
+    },
+    "y": {
+      "field": "Emissions",
+      "type": "quantitative",
+      "axis": { "title": "Emissions (Mt CO₂)" }
+    },
+    "color": {
+      "field": "Gas",
+      "type": "nominal",
+      "legend": { "title": "Gas" }
+    },
+    "tooltip": [
+      { "field": "Gas", "type": "nominal" },
+      { "field": "Quarter", "type": "ordinal" },
+      { "field": "CO2 emissions (trend)", "type": "quantitative", "title": "Emissions (Mt CO₂)" }
+    ]
+}
+}

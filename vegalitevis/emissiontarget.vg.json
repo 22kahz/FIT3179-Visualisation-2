@@ -1,0 +1,316 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 800,
+  "height": 450,
+  "title": "s",
+  "config": {
+    "font": "Lexend Deca",
+    "background": "#ecebe4"
+  },
+  "data": {
+    "url": "/data/emissiontarget.csv"
+  },
+  "layer": [
+    {
+      "mark": { "type": "line", "color": "#4f7cac", "strokeWidth": 3 },
+      "encoding": {
+        "x": {
+          "field": "Quarter",
+          "type": "temporal",
+          "axis": { "title": "Year" },
+          "scale": {
+            "domain": ["2004-01-01", "2050-12-31"]
+          }
+        },
+        "y": {
+          "field": "Trend",
+          "type": "quantitative",
+          "axis": { "title": "Emissions (Mt CO2-e)" },
+          "scale": {
+            "domain": [0, 180]
+          }
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          { "Quarter": "2025-07-01", "Trend": 107.6 },
+          { "Quarter": "2050-01-01", "Trend": 0 }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "strokeWidth": 1.2,
+        "strokeDash": [5, 5],
+        "color": "#333"
+      },
+      "encoding": {
+        "x": {
+          "field": "Quarter",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Trend",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          { "Quarter": "2035-01-01", "Trend": 60.2 },
+          { "Quarter": "2050-01-01", "Trend": 0 }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.2,
+        "strokeDash": [8, 8],
+        "color": "#333"
+      },
+      "encoding": {
+        "x": {
+          "field": "Quarter",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Trend",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          { "Quarter": "2035-01-01", "Trend": 47.5 },
+          { "Quarter": "2050-01-01", "Trend": 0 }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.2,
+        "strokeDash": [8, 8],
+        "color": "#333"
+      },
+      "encoding": {
+        "x": {
+          "field": "Quarter",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Trend",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          { "Quarter": "2035-01-01", "Trend": 60.2 },
+          { "Quarter": "2032-07-01", "Trend": 60.2 }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "strokeWidth": 1.2,
+        "color": "#333"
+      },
+      "encoding": {
+        "x": {
+          "field": "Quarter",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Trend",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          { "Quarter": "2035-01-01", "Trend": 47.5 },
+          { "Quarter": "2032-07-01", "Trend": 47.5 }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "strokeWidth": 1.2,
+        "color": "#333"
+      },
+      "encoding": {
+        "x": {
+          "field": "Quarter",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Trend",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          { "Quarter": "2032-07-01", "Trend": 60.2 },
+          { "Quarter": "2032-07-01", "Trend": 47.5 }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "strokeWidth": 1.2,
+        "color": "#333"
+      },
+      "encoding": {
+        "x": {
+          "field": "Quarter",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Trend",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          { "Quarter": "2032-07-01", "Trend": 53.85 },
+          { "Quarter": "2030-07-01", "Trend": 53.85 }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "strokeWidth": 1.2,
+        "color": "#333"
+      },
+      "encoding": {
+        "x": {
+          "field": "Quarter",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Trend",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          { "Quarter": "2030-01-01", "Trend": 90.2 },
+          { "Quarter": "2035-01-01", "Trend": 60.2 },
+          { "Quarter": "2035-01-01", "Trend": 47.5 }
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "color": "#92BF58",
+        "size": 100,
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "Quarter",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Trend",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Quarter": "2030-01-01",
+            "Trend": 90.2,
+            "label": "2030 Target: 43% below 2005 levels"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dy": -10,
+        "dx": 10,
+        "fontSize": 14,
+        "color": "#333"
+      },
+      "encoding": {
+        "x": {
+          "field": "Quarter",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Trend",
+          "type": "quantitative"
+        },
+        "text": { "field": "label" }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Quarter": "2030-07-01",
+            "Trend": 53.85,
+            "label": "2035 Target: 62-70% below 2005 levels"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -5,
+        "fontSize": 14,
+        "color": "#333"
+      },
+      "encoding": {
+        "x": {
+          "field": "Quarter",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Trend",
+          "type": "quantitative"
+        },
+        "text": { "field": "label" }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Quarter": "2025-07-01",
+            "Trend": 107.6,
+            "label": "Actual Emissions"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dy": -10,
+        "dx": -5,
+        "fontSize": 14,
+        "color": "#4f7cac"
+      },
+      "encoding": {
+        "x": {
+          "field": "Quarter",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Trend",
+          "type": "quantitative"
+        },
+        "text": { "field": "label" }
+      }
+    }
+  ]
+}

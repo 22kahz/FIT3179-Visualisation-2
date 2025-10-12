@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 800,
+  "height": 450,
+  "title": "Temperature Anomaly Over Time",
+  "data": {
+    "url": "/data/temperature.csv"
+  },
+  "config": {
+    "font": "Lexend Deca",
+    "background": "#ecebe4"
+  },
+  "transform": [
+    {
+      "window": [
+        {
+          "op": "mean",
+          "field": "Average Mean Surface Air Temperature (°C)",
+          "as": "Mean Temperature"
+        }
+      ]
+    },
+    {
+      "calculate": "datum['Average Mean Surface Air Temperature (°C)'] - datum['Mean Temperature']",
+      "as": "Temperature Anomaly"
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "format": "%Y",
+      "axis": {
+        "title": "Year"
+      }
+    },
+    "y": {
+      "field": "Temperature Anomaly",
+      "type": "quantitative",
+      "axis": {
+        "title": "Temperature (°C)"
+      }
+    },
+    "color": {
+      "condition": {
+        "test": "datum['Temperature Anomaly'] > 0",
+        "value": "#4575b4"
+      },
+      "value": "#d73027"
+    }
+    ,
+    "tooltip": [
+      { "field": "Year", "type": "temporal", "title": "Year", "format": "%Y" },
+      {
+        "field": "Average Mean Surface Air Temperature (°C)",
+        "type": "quantitative",
+        "title": "Temp (°C)"
+      }
+    ]
+  }
+}

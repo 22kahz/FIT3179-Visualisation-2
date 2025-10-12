@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": { "url": "/data/sector.csv" },
+  "width": 800,
+  "height": 450,
+  "mark": "line",
+  "config": {
+    "font": "Lexend Deca",
+    "background": "#ecebe4"
+  },
+  "transform": [
+    {
+      "fold": [
+        "Electricity",
+        "Stationary Energy excluding electricity",
+        "Transport",
+        "Fugitive Emissions",
+        "Industrial Processes and Product Use",
+        "Agriculture",
+        "Waste",
+        "Land Use Land Use Change and Forestry (LULUCF)",
+        "National Inventory Total"
+      ],
+      "as": ["Sector", "Emissions"]
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Quarter",
+      "type": "ordinal",
+      "axis": { "title": "Quarter" }
+    },
+    "y": {
+      "field": "Emissions",
+      "type": "quantitative",
+      "axis": { "title": "Emissions (Mt CO₂)" }
+    },
+    "color": {
+      "field": "Sector",
+      "type": "nominal",
+      "legend": { "title": "Sector" }
+    },
+    "tooltip": [
+      { "field": "Sector", "type": "nominal" },
+      { "field": "Quarter", "type": "ordinal" },
+      { "field": "Emissions", "type": "quantitative", "title": "Emissions (Mt CO₂)" }
+    ]
+}
+}

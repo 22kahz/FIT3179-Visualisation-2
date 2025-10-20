@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "width": 800,
+  "width": 720,
   "height": 450,
-  "title": "Temperature Anomaly Over Time",
+  "title": "Temperature Anomalies Over Time",
   "data": {
     "url": "https://raw.githubusercontent.com/22kahz/FIT3179-Visualisation-2/refs/heads/main/vegalitevis/data/temperature.csv"
   },
@@ -25,38 +25,186 @@
       "as": "Temperature Anomaly"
     }
   ],
-  "mark": "bar",
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "Year": "1963-01-01",
+            "Temperature Anomaly": 1.3,
+            "label": "Warmer than average"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "fontSize": 14,
+        "color": "#333"
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Temperature Anomaly",
+          "type": "quantitative"
+        },
+        "text": { "field": "label" }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Year": "1963-01-01",
+            "Temperature Anomaly": -0.7,
+            "label": "Cooler than average"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "fontSize": 14,
+        "color": "#333"
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Temperature Anomaly",
+          "type": "quantitative"
+        },
+        "text": { "field": "label" }
+      }
+    },
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal",
+          "axis": {
+            "title": "Year"
+          }
+        },
+        "y": {
+          "field": "Temperature Anomaly",
+          "type": "quantitative",
+          "axis": {
+            "title": "Temperature (°C)"
+          },
+          "scale": {"domain": [-0.8, 1.6]}
+        },
+        "color": {
+          "condition": {
+            "test": "datum['Temperature Anomaly'] > 0",
+            "value": "#4575b4"
+          },
+          "value": "#d73027"
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "type": "temporal",
+            "title": "Year",
+            "format": "%Y"
+          },
+          {
+            "field": "Average Mean Surface Air Temperature (°C)",
+            "type": "quantitative",
+            "title": "Temp (°C)"
+          }
+        ]
+      }
+    },
+    {
+  "mark": {
+    "type": "rule",
+    "strokeWidth": 1,
+    "color": "#333"
+  },
+  "encoding": {
+    "y": {"datum": 0}
+  }
+},
+{
+  "params": [
+    {
+      "name": "index",
+      "select": {
+        "type": "point",
+        "encodings": ["x"],
+        "on": "pointermove",
+        "nearest": true
+      }
+    }
+  ],
+  "mark": {"type": "point"},
   "encoding": {
     "x": {
       "field": "Year",
-      "type": "temporal",
-      "format": "%Y",
-      "axis": {
-        "title": "Year"
-      }
+      "type": "temporal"
     },
-    "y": {
-      "field": "Temperature Anomaly",
-      "type": "quantitative",
-      "axis": {
-        "title": "Temperature (°C)"
-      }
-    },
-    "color": {
-      "condition": {
-        "test": "datum['Temperature Anomaly'] > 0",
-        "value": "#4575b4"
-      },
-      "value": "#d73027"
-    }
-    ,
-    "tooltip": [
-      { "field": "Year", "type": "temporal", "title": "Year", "format": "%Y" },
-      {
-        "field": "Average Mean Surface Air Temperature (°C)",
-        "type": "quantitative",
-        "title": "Temp (°C)"
-      }
-    ]
+    "y": {"field": "Temperature Anomaly", "type": "quantitative"},
+    "opacity": {"value": 0}
   }
+},
+{
+  "transform": [{"filter": {"and": ["index.Year", {"param": "index"}]}}],
+  "mark": "rule",
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal"
+    }
+  }
+},
+{
+  "transform": [
+    {"filter": {"and": ["index.Year", {"param": "index"}]}},
+    {"calculate": "'Year: ' + year(datum.Year)", "as": "year_label"}
+  ],
+  "mark": {
+    "type": "text",
+    "align": "right",
+    "dx": -5,
+    "dy": 10,
+    "fontSize": 12
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal"
+    },
+    "y": {"value": 10},
+    "text": {"field": "year_label", "type": "nominal"}
+  }
+},
+{
+  "transform": [
+    {"filter": {"and": ["index.Year", {"param": "index"}]}},
+    {"calculate": "format(datum['Temperature Anomaly'], '.2f') + ' °C'", "as": "temp_label"}
+  ],
+  "mark": {
+    "type": "text",
+    "align": "right",
+    "dx": -5,
+    "dy": 25,
+    "fontSize": 12
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal"
+    },
+    "y": {"value": 10},
+    "text": {"field": "temp_label", "type": "nominal"}
+  }
+}
+  ]
 }

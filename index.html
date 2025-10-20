@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
     <script src="vega_lite_vis.js"></script>
-    <title>FIT3179 Week 10 Homework</title>
+    <title>FIT3179 Visualisation 2</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,49 +15,40 @@
   </head>
 <body>
 
-  <!-- <header>
-    <nav>
-      <h2>MyBrand</h2>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-  </header> -->
-
   <section class="title-section">
     <h1>Australia's Net Zero Progress</h1>
-    <h2 class="title-subtext">Is Australia on Track for <span class="highlight">Net Zero by 2050?</span></h2>
+    <h2>Is Australia on Track for <span class="highlight">Net Zero by 2050?</span></h2>
   </section>
   <hr></hr>
 
   <section class="content-section">
     <div class="grid">
-      <h2>Against Other Countries</h2>
-      <p>
-        In 2015, Australia joined over 190 countries in signing the Paris Agreement, striving to achieve net zero emissions by 2050.
-      </p>
+      <h3>Where Does Australia Fit in the World's Emissions Picture?</h3>
+    </div>
+    <div class="map-container">
+            <script class="content" id="map"></script>
     </div>
     <div class="grid">
-      <div class="two-columns">      
-        <p class="content">Australia ranks number 8 in highest carbon dioxide emissions per capita in 2023. Small, wealthy countries like Qatar have the highest per capita emissions whereas large countries such as China are the top contributors to total emissions but their per capita emissions vary.</p>
-        <script class="content" id="map"></script>
+      <div class="three-columns">     
+        <p class="content text justify">In 2015, Australia joined over 190 countries in signing the Paris Agreement, striving to achieve <span class="highlight large">zero emissions by 2050.</span></p>
+        <p class="content text justify"><b>Australia ranks number 12</b> in highest carbon dioxide emissions per capita in 2023 with 14.48 tonnes of CO₂ per capita.</p>
+        <p class="content text justify">Small, wealthy countries like <b>Qatar have the highest per capita emissions. </b>Large countries such as <b>China are the top contributors to total emissions</b> but their per capita emissions vary.</p>
       </div>
     </div>
   </section>
 
   <section class="content-section">
     <div class="grid">
-      <h2>Current Progress</h2>
-      <p>
-         Australia targeted to reduce emissions by 43% on 2005 levels by 2030 and 62-70% on 2005 levels by 2035 as their step to a net zero emission by 2050.
-      </p>
+      <h3>What is Australia's Current Progress?</h3>
     </div>
     <div class="grid">
-      <div class="two-columns">      
-        <p class="content">text</p>
+      <div class="two-columns">
+        <div>
+          <p class="content text">Australia targeted to reduce emissions by <span class="highlight large">43% on 2005 levels by 2030</span> and <span class="highlight large"> 62-70% by 2035</span> as their step to a net zero emission by 2050.</p>
+          <p class="content text">Australia has <b>already reduced emissions in 2024 by 27% on 2005 levels.</b> The most recent data for 2025 indicates that emissions are down 29%.</p>
+          <p class="content text">Emissions have been on a <b>downward trend since 2006</b> but flattened out around the 2020-2024 period, suggesting a potential slowdown in the rate of emissions reduction.</p>
+          <p class="content text">The green dots show how much emissions must be reduced to reach their 2030 and 2035 targets.</p>
+        </div>  
         <script class="content" id="emissiontarget"></script>
       </div>
     </div>
@@ -65,14 +56,66 @@
 
   <section class="content-section">
     <div class="grid">
-      <h2>Temperature Anomalies</h2>
-      <p>
-        How different temperatures has been from the average
-      </p>
+      <h3>Major Types of Greenhouse Gases</h3>
     </div>
     <div class="grid">
-      <div class="two-columns">      
-        <p class="content">text</p>
+      <div class="two-columns">     
+        <div> 
+        <p class="content text"><b>Carbon dioxide has consistently been the largest greenhouse gas emitted in Australia,</b> accounting for the majority of total emissions each year.</p>
+        <p class="content text">It is mainly produced from burning fossil fuels and remains trapped in the atmosphere for centuries which traps heat and drives long-term climate change. Despite not being the most potent greenhouse gas, carbon dioxide is still the most harmful overall due to <b>how much of it we produce and how long it stays in the atmosphere.</b></p>
+        <p class="content text">But, <span class="highlight large">carbon dioxide emissions have fallen substantially since 2005</span> due to cleaner energy generation and the growth of renewable energy even though other greenhouse gas emissions have remained relatively stable.</p>
+       </div>
+        <script class="content" id="emissionbygas"></script>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="grid">
+      <h3>Which Sector Contributed the Most Emissions?</h3>
+    </div>
+    <div class="grid">
+      <div class="two-columns">     
+        <div> 
+        <p class="content text">Electricity-related emissions have consistently been the leading contributor to overall emissions. However, <span class="highlight large">electricity emissions have been on a slight decline since 2012,</span> showing signs that renewable energy sources has become more common.</p>
+        <p class="content text">Meanwhile, <b>stationary energy excluding electricity is the second-most contributing factor and transportation is the third.</b> Transportation specifically, saw a dip in December 2019 as COVID-19 lockdowns occurred but continued to increase due to increased road diesel and aviation fuel consumption.</p>
+        <p class="content text">Land Use and Forestry actually had negative emissions, reflecting the benefits of clean forestry practices such as reforestation and cover cropping.</p>
+      <p class="content text"><i>*Click on the legend labels to highlight a specific sector.*</i></p>
+      </div>
+        <script class="content" id="sector"></script>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="grid">
+      <h3>A Deep Dive in Electricity Production</h3>
+    </div>
+    <div class="grid">
+      <div class="two-columns">     
+        <div> 
+        <p class="content text"><b>Coal has been the dominant source of electricity generation</b> throughout the entire period, making up the vast majority of the total GWh generated.</p>
+        <p class="content text">In the last decade from 2015, there has been a <span class="highlight large">shift towards using renewable sources of energy</span> most prominently wind and solar.</p>
+        <p class="content text">Solar only started to be used in 2015 but became the <b>fastest growing renewable source</b> in recent years due to cost reductions, high scalability and fewer geographic restrictions compared to other renewable sources.</p>
+        <p class="content text">The production of battery, bioenergy and distillate were negligible compared to the other sources of electricity.</p>
+  
+       </div>
+        <script class="content" id="electricity"></script>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="grid">
+      <h3>The Impact of Greenhouse gases on Temperatures</h3>
+    </div>
+    <div class="grid">
+      <div class="two-columns">     
+        <div> 
+        <p class="content text">A temperature anomaly is the <b>difference between the observed temperature and a long-term average</b> for a specific location and time period.</p>
+        <p class="content text">The rise in global temperatures are mainly caused by the greenhouse gases being emitted, known as the greenhouse effect where they act like a blanket, trapping heat that the Earth radiates back toward space. The heat trapped causes the warming effect seen as the longer blue bars, demonstrating that <b>in recent years the world is getting warmer than the long run average.</b></p>
+        <p class="content text">Past the 2000s, the red bars virtually disappear while the blue spikes become taller and taller, showing a trend that <span class="highlight large">the world is expected to get hotter and hotter each year due to the greenhouse effect.</span></p>
+       </div>
         <script class="content" id="temperature"></script>
       </div>
     </div>
@@ -80,34 +123,16 @@
 
   <section class="content-section">
     <div class="grid">
-      <h2>Emissions by sector</h2>
-      <p>
-        Which sector is producing the most emissions
-      </p>
+      <h3>Conclusion</h3>
     </div>
     <div class="grid">
-      <div class="two-columns">      
-        <p class="content">text</p>
-        <script class="content" id="sector"></script>
+      <div class="three-columns">
+        <p class="content text">Despite Australia being ranked quite highly among the world's highest emitters of carbon dioxide per capita, Australia has made significant progress toward its net zero goal cutting emissions by almost a third since 2005 through cleaner and renewable energy generation like wind and solar, avoiding the need to burn harmful fossil fuels.</p>
+        <p class="content text">While carbon dioxide emissions have declined, other greenhouse gases such as methane and nitrous oxide have remained steady and transport and other stationary energy other than electricity continue to offset gains made in reduced electricity generation. </p>
+        <p class="content text">Although, this report focused on only Australia, the temperature rise will be felt globally and so reaching net zero by 2050 is not just an Australian mission but a global initiative that require sustained effort in cutting emissions and continued investment in cleaner technologies.</p>
       </div>
-    </div>
+  </div>
   </section>
-
-    <section class="content-section">
-    <div class="grid">
-      <h2>Emissions by gas</h2>
-      <p>
-        Which gas is being produced
-      </p>
-    </div>
-    <div class="grid">
-      <div class="two-columns">      
-        <p class="content">text</p>
-        <script class="content" id="emissionsbygas"></script>
-      </div>
-    </div>
-  </section>
-
   <!-- <footer>
     <p>&copy; 2025 My Website | Built with ❤️ and CSS</p>
   </footer> fill in with info later--> 

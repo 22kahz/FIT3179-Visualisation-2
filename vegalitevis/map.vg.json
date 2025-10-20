@@ -1,37 +1,36 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "width": 800,
-  "height": 450,
-  "title": "Carbon Dioxide Emissions per Capita by Country 2023",
+  "width": 1080,
+  "height": 550,
+  "title": "Carbon Dioxide Emissions per Capita by Country in 2023",
   "config": {
     "font": "Lexend Deca",
-    "background": "#ecebe4",
-    "style": {
-    "cell": {
-      "stroke": "transparent"
-    }
-  }
+    "background": "#ecebe4"
   },
-  "projection": { "type": "equalEarth" },
+  "projection": { "type": "equalEarth", "rotate": [-5, 0, 0] },
+  "params": [
+    {
+      "name": "show_top15",
+      "value": false,
+      "bind": { "input": "checkbox", "name": "Show Top 15 Emitters"}
+    }
+  ],
   "layer": [
     {
-      "data": { "sphere": true },
-      "mark": { "type": "geoshape", "fill": "#aadaff", "stroke": null }
-    },
-    {
       "data": {
-        "url": "https://raw.githubusercontent.com/22kahz/FIT3179-Week-9-Homework/refs/heads/main/vegalitevis/data/ne_110m.json",
+        "url": "https://raw.githubusercontent.com/22kahz/FIT3179-Visualisation-2/refs/heads/main/vegalitevis/data/ne_110m.json",
         "format": { "type": "topojson", "feature": "ne_110m_admin_0_countries" }
       },
       "transform": [
+          { "filter": "datum.properties.NAME != 'Antarctica'" },
         {
           "lookup": "properties.ISO_A3",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/22kahz/FIT3179-Week-9-Homework/refs/heads/main/vegalitevis/data/owid-co2-data_cleaned.csv"
+              "url": "https://raw.githubusercontent.com/22kahz/FIT3179-Visualisation-2/refs/heads/main/vegalitevis/data/owid-co2-data_cleaned.csv"
             },
             "key": "iso_code",
-            "fields": ["co2_per_capita"]
+            "fields": ["co2_per_capita", "co2_rank"]
           }
         }
       ],
@@ -69,10 +68,17 @@
           }
         },
         "stroke": {
-          "condition": {
-            "param": "country_hover",
-            "value": "gray"
-          },
+          "condition": [
+                        {
+              "test": "show_top15 && datum.co2_rank <= 15",
+              "value": "red"
+            },
+            {
+              "param": "country_hover",
+              "value": "gray"
+            }
+
+          ],
           "value": "lightgray"
         },
         "strokeWidth": {
@@ -97,16 +103,10 @@
             "type": "quantitative",
             "title": "CO₂ per Capita (Tonnes)",
             "format": ".2f"
-          }
+          },
+          {"field": "co2_rank", "type": "quantitative", "title": "CO₂ Country Ranking"}
         ]
       }
-    },
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/22kahz/FIT3179-Week-9-Homework/refs/heads/main/vegalitevis/data/ne_110m.json",
-        "format": { "type": "topojson", "feature": "ne_110m_graticules_30" }
-      },
-      "mark": { "type": "geoshape", "fill": null, "stroke": "gray" }
     }
   ]
 }

@@ -28,7 +28,12 @@ var vg_6 = "vegalitevis/sector.vg.json";
 vegaEmbed("#sector", vg_6).then(function(result) {
 }).catch(console.error);
 
-var vg_7 = "vegalitevis/emissionsbygas.vg.json";
+var vg_7 = "vegalitevis/emissionbygas.vg.json";
 
-vegaEmbed("#emissionsbygas", vg_7).then(function(result) {
+vegaEmbed("#emissionbygas", vg_7).then(function(result) {
+}).catch(console.error);
+
+var vg_8 = "vegalitevis/electricity.vg.json";
+
+vegaEmbed("#electricity", vg_8).then(function(result) {
 }).catch(console.error);

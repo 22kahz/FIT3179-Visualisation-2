@@ -1,0 +1,114 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 720,
+  "height": 450,
+  "title": "Electricity Production and Consumption",
+  "data": {
+    "url": "https://raw.githubusercontent.com/22kahz/FIT3179-Visualisation-2/refs/heads/main/vegalitevis/data/electricity.csv"
+  },
+  "config": {
+    "font": "Lexend Deca",
+    "background": "#ecebe4"
+  },
+  "transform": [
+    {
+      "fold": [
+        "Coal",
+        "Bioenergy",
+        "Distillate",
+        "Gas",
+        "Battery",
+        "Hydro",
+        "Wind",
+        "Solar"
+      ],
+      "as": ["Source", "Generation"]
+    },
+    {
+      "calculate": "timeParse(datum.date, '%Y-%m-%d')",
+      "as": "parsed_date"
+    },
+    {
+      "filter": "year(datum.parsed_date) >= 1999"
+    },
+    {
+      "calculate": "datum.Generation / 1000",
+      "as": "Generation in Thousands"
+    }
+  ],
+  "params": [
+    {
+      "name": "highlight",
+      "select": {
+        "type": "point",
+        "fields": ["Source", "parsed_date"],
+        "on": "mouseover"
+      }
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "width": 25,
+        "align": "left",
+        "stroke": "black"
+      },
+      "encoding": {
+        "x": {
+          "field": "parsed_date",
+          "type": "temporal",
+          "axis": { "title": "Year" },
+          "scale": {
+            "domain": ["1999", "2026"]
+          }
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": "Generation in Thousands",
+          "type": "quantitative",
+          "axis": { "title": "Total Generation (GWh in Thousands)" }
+        },
+        "opacity": {
+          "condition": { "param": "highlight", "value": 1 },
+          "value": 0.3
+        },
+        "strokeWidth": {
+          "condition": {
+            "param": "highlight",
+            "empty": false,
+            "value": 2
+          },
+          "value": 0
+        },
+        "color": {
+          "field": "Source",
+          "type": "nominal",
+          "title": "Energy Source",
+          "scale": {
+            "scheme": "category10"
+          },
+          "legend": {
+            "orient": "bottom",
+            "title": "GWh Produced"
+          }
+        },
+        "tooltip": [
+          { "field": "Source", "type": "nominal" },
+          {
+            "field": "parsed_date",
+            "type": "temporal",
+            "format": "%Y",
+            "title": "Year"
+          },
+          {
+            "field": "Generation in Thousands",
+            "type": "quantitative",
+            "title": "GWh Produced in Thousands",
+            "format": ",.2f"
+          }
+        ]
+      }
+    }
+  ]
+}

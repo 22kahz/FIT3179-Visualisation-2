@@ -1,0 +1,89 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/22kahz/FIT3179-Visualisation-2/refs/heads/main/vegalitevis/data/emissionbygas.csv"
+  },
+  "width": 720,
+  "height": 450,
+  "title": "Emissions by Greenhouse Gas Type",
+  "config": {
+    "font": "Lexend Deca",
+    "background": "#ecebe4"
+  },
+  "transform": [
+    {
+      "fold": [
+        "CO2 emissions",
+        "CH4 emissions",
+        "N2O emissions",
+        "Other emissions"
+      ],
+      "as": ["Gas", "Emissions"]
+    }
+  ],
+  "layer": [
+    {
+      "mark": "line",
+      "encoding": {
+        "x": {
+          "field": "Quarter",
+          "type": "temporal",
+          "axis": { "title": "Quarter" }
+        },
+        "y": {
+          "field": "Emissions",
+          "type": "quantitative",
+          "axis": { "title": "Emissions (Mt CO₂)" }
+        },
+        "color": {
+          "field": "Gas",
+          "type": "nominal",
+          "legend": { "title": "Gas" }
+        }
+      }
+    },
+    {"params": [{
+          "name": "highlight",
+          "select": {
+            "type": "point",
+            "on": "mouseover",
+            "nearest": true,
+            "fields": ["Emissions", "Quarter"]
+          }
+        }],
+      "mark": { "type": "point", "filled": true },
+      "encoding": {
+        "x": {
+          "field": "Quarter",
+          "type": "temporal",
+          "axis": { "title": "Quarter" }
+        },
+        "y": {
+          "field": "Emissions",
+          "type": "quantitative",
+          "axis": { "title": "Emissions (Mt CO₂)" }
+        },
+        "color": {
+          "field": "Gas",
+          "type": "nominal",
+          "legend": { "title": "Gas", "orient": "bottom" }
+        },
+               "size": {
+          "condition": { "param": "highlight", "value": 60, "empty": false },
+          "value": 0
+        },
+        "opacity": { "value": 1 },
+        "tooltip": [
+          { "field": "Gas", "type": "nominal" },
+          { "field": "Quarter", "type": "temporal", "format": "%b, %Y" },
+          {
+            "field": "Emissions",
+            "type": "quantitative",
+            "title": "Emissions (Mt CO₂)",
+            "format": ",.2f"
+          }
+        ]
+      }
+    }
+  ]
+}

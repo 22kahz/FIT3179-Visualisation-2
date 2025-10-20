@@ -1,9 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "data": { "url": "https://raw.githubusercontent.com/22kahz/FIT3179-Visualisation-2/refs/heads/main/vegalitevis/data/sector.csv" },
-  "width": 800,
+  "data": {
+    "url": "https://raw.githubusercontent.com/22kahz/FIT3179-Visualisation-2/refs/heads/main/vegalitevis/data/sector.csv"
+  },
+  "width": 720,
   "height": 450,
-  "mark": "line",
+  "title": "Emissions by Emitting Sector",
   "config": {
     "font": "Lexend Deca",
     "background": "#ecebe4"
@@ -18,32 +20,118 @@
         "Industrial Processes and Product Use",
         "Agriculture",
         "Waste",
-        "Land Use Land Use Change and Forestry (LULUCF)",
-        "National Inventory Total"
+        "Land Use Land Use Change and Forestry (LULUCF)"
       ],
       "as": ["Sector", "Emissions"]
+    },
+    {
+      "calculate": "datum.Sector == 'Land Use Land Use Change and Forestry (LULUCF)' ? 'Land Use and Forestry' : datum.Sector == 'Stationary Energy excluding electricity' ? 'Other Stationary Energy' : datum.Sector == 'Industrial Processes and Product Use' ? 'Industrial' : datum.Sector",
+      "as": "Sector"
     }
   ],
-  "encoding": {
-    "x": {
-      "field": "Quarter",
-      "type": "ordinal",
-      "axis": { "title": "Quarter" }
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "sector_highlight",
+          "select": {
+            "type": "point",
+            "fields": ["Sector"]
+          },
+          "bind": "legend"
+        }
+      ],
+      "mark": "line",
+      "encoding": {
+        "x": {
+          "field": "Quarter",
+          "type": "temporal",
+          "axis": { "title": "Year", "format": "%Y" }
+        },
+        "y": {
+          "field": "Emissions",
+          "type": "quantitative",
+          "axis": { "title": "Emissions (Mt CO₂)" }
+        },
+        "color": {
+          "field": "Sector",
+          "type": "nominal",
+          "legend": {
+            "orient": "bottom",
+            "title": "Sector",
+            "columns": 4
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "sector_highlight",
+            "value": 1,
+            "empty": true
+          },
+          "value": 0.2
+        },
+        "strokeWidth": {
+          "condition": {
+            "param": "sector_highlight",
+            "value": 2,
+            "empty": true
+          },
+          "value": 1
+        }
+      }
     },
-    "y": {
-      "field": "Emissions",
-      "type": "quantitative",
-      "axis": { "title": "Emissions (Mt CO₂)" }
-    },
-    "color": {
-      "field": "Sector",
-      "type": "nominal",
-      "legend": { "title": "Sector" }
-    },
-    "tooltip": [
-      { "field": "Sector", "type": "nominal" },
-      { "field": "Quarter", "type": "ordinal" },
-      { "field": "Emissions", "type": "quantitative", "title": "Emissions (Mt CO₂)" }
-    ]
-}
+    {
+      "params": [
+        {
+          "name": "point_highlight",
+          "select": {
+            "type": "point",
+            "on": "mouseover",
+            "nearest": true,
+            "fields": ["Quarter", "Sector"]
+          }
+        }
+      ],
+      "mark": { "type": "point", "filled": true },
+      "encoding": {
+        "x": {
+          "field": "Quarter",
+          "type": "temporal",
+          "axis": { "title": "Year", "format": "%Y" }
+        },
+        "y": {
+          "field": "Emissions",
+          "type": "quantitative",
+          "axis": { "title": "Emissions (Mt CO₂)" }
+        },
+        "size": {
+          "condition": {
+            "param": "point_highlight",
+            "value": 60,
+            "empty": false
+          },
+          "value": 0
+        },
+        "color": {
+          "field": "Sector",
+          "type": "nominal",
+          "legend": {
+            "orient": "bottom",
+            "title": "Sector",
+            "columns": 4
+          }
+        },
+        "tooltip": [
+          { "field": "Sector", "type": "nominal" },
+          { "field": "Quarter", "type": "temporal", "format": "%b %Y" },
+          {
+            "field": "Emissions",
+            "type": "quantitative",
+            "title": "Emissions (Mt CO₂)"
+          }
+        ],
+        "opacity": { "value": 1 }
+      }
+    }
+  ]
 }

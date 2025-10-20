@@ -2,6 +2,8 @@ body {
       background-color: #ecebe4;
       font-family: "Lexend Deca", "Helvetica", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif, sans-serif;
       color: #333;
+      margin-left: 10em;
+      margin-right: 10em;
     }
 
 .title-section {
@@ -21,15 +23,26 @@ h1 {
 h2 {
   font-size: 2em;
   font-weight: 400;
-}
-
-.title-subtext {
   line-height: 1;
   margin-top: 0.6em;
   margin-bottom: 1.2em;
-  /* background-color: blue; */
 }
 
+h3 {
+  font-size: 2.4em;
+  font-weight: 500;
+  margin-bottom: 0em;
+  margin-top: 0.4em;
+  justify-self: center;
+}
+
+b {
+  font-weight: 800;
+}
+p {
+  margin-top: 0em;
+  font-size: 1em
+}
 .highlight {
   background-color: #d8ca43;
   border-radius: 5px;
@@ -44,8 +57,8 @@ hr {
 }
 
 .content-section {
-  padding: 1em;
-  margin-bottom: 2em;
+  /* margin: 5em; */
+  margin-bottom: 0em;
 }
 .grid {
   display: grid;
@@ -54,15 +67,40 @@ hr {
   /* background-color: brown; */
 }
 
-.two-columns {
-  display: grid;
-  grid-template-columns:  minmax(250px, 30%) minmax(400px, 70%);
-  gap: 1em;
-  /* background-color: yellow; */
+.map-container {
+  /* background-color: #d8ca43; */
+  justify-self: center;
 }
 
+.two-columns {
+  display: grid;
+  grid-template-columns: minmax(250px, 30%) minmax(400px, 70%);
+  gap: 1em;
+  justify-items: start;
+  /* background-color: yellow; */
+}
+.three-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1em;
+  align-items: start;
+  justify-items: center;
+  /* background-color: yellow; */
+}
 .content {
   /* background-color: burlywood; */
   padding: 1em;
   text-align: center;
+}
+
+.text {
+  text-align: left;
+}
+
+.large {
+  font-size: 1.24em;
+}
+
+.justify {
+  text-align: justify;
 }

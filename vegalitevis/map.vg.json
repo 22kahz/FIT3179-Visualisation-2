@@ -12,7 +12,7 @@
     {
       "name": "show_top15",
       "value": false,
-      "bind": { "input": "checkbox", "name": "Show Top 15 Emitters"}
+      "bind": { "input": "checkbox", "name": "Highlight Top 15 Emitting Countries"}
     }
   ],
   "layer": [
@@ -71,7 +71,7 @@
           "condition": [
                         {
               "test": "show_top15 && datum.co2_rank <= 15",
-              "value": "red"
+              "value": "#333"
             },
             {
               "param": "country_hover",
@@ -82,11 +82,15 @@
           "value": "lightgray"
         },
         "strokeWidth": {
-          "condition": {
+          "condition": [
+                                    {
+              "test": "show_top15 && datum.co2_rank <= 15",
+              "value": 1.5
+            },{
             "param": "country_hover",
             "value": 1.5,
             "empty": false
-          },
+          }],
           "value": 0.5
         },
         "opacity": {

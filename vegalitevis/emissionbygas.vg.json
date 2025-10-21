@@ -38,7 +38,8 @@
         "color": {
           "field": "Gas",
           "type": "nominal",
-          "legend": { "title": "Gas" }
+          "scale": {"range": ["#F5B800", "#20a39e", "#ef5b5b", "#63DBA7" ]},
+          "legend": { "title": "Gas" } 
         }
       }
     },

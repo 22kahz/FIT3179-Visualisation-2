@@ -25,7 +25,7 @@
         "y": {
           "field": "Trend",
           "type": "quantitative",
-          "axis": { "title": "Emissions (Mt CO2-e)" },
+          "axis": { "title": "Emissions (Mt CO₂-e)" },
           "scale": {
             "domain": [0, 180]
           }
@@ -66,7 +66,7 @@
         "y": {
           "field": "Trend",
           "type": "quantitative",
-          "axis": { "title": "Emissions (Mt CO2-e)" },
+          "axis": { "title": "Emissions (Mt CO₂-e)" },
           "scale": {
             "domain": [0, 180]
           }
@@ -83,7 +83,7 @@
             "title": "Quarter",
             "format": "%b, %Y"
           },
-          { "field": "Trend", "type": "quantitative", "title": "Emissions" }
+          { "field": "Trend", "type": "quantitative", "title": "Emissions (Mt CO₂-e)" }
         ]
       }
     },

@@ -3,9 +3,9 @@ var vg_1 = "vegalitevis/map.vg.json";
 vegaEmbed("#map", vg_1).then(function(result) {
 }).catch(console.error);
 
-var vg_2 = "vegalitevis/linechart.vg.json";
+var vg_2 = "vegalitevis/electricity.vg.json";
 
-vegaEmbed("#linechart", vg_2).then(function(result) {
+vegaEmbed("#electricity", vg_2).then(function(result) {
 }).catch(console.error);
 
 var vg_3 = "vegalitevis/sector.vg.json";
@@ -31,9 +31,4 @@ vegaEmbed("#sector", vg_6).then(function(result) {
 var vg_7 = "vegalitevis/emissionbygas.vg.json";
 
 vegaEmbed("#emissionbygas", vg_7).then(function(result) {
-}).catch(console.error);
-
-var vg_8 = "vegalitevis/electricity.vg.json";
-
-vegaEmbed("#electricity", vg_8).then(function(result) {
 }).catch(console.error);

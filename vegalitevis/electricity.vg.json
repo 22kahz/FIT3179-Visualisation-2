@@ -86,7 +86,7 @@
           "type": "nominal",
           "title": "Energy Source",
           "scale": {
-            "scheme": "category10"
+            "range": ["#e9b872", "#C1DC5F",  "#90a959", "#a63d40", "#6494aa", "#f26419", "#edbfc6", "#7161ef"]
           },
           "legend": {
             "orient": "bottom",

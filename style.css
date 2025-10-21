@@ -54,6 +54,7 @@ hr {
   max-width: 40em;
   border: none;
   border-top: 1.6px solid #333;
+  margin-bottom: 2.4em;
 }
 
 .content-section {
@@ -103,4 +104,16 @@ hr {
 
 .justify {
   text-align: justify;
+}
+
+.metadata {
+  margin: 0em
+}
+
+.metadata-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+  justify-items: start;
+  /* background-color: yellow; */
 }

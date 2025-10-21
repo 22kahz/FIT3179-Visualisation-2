@@ -103,9 +103,9 @@
         "color": {
           "condition": {
             "test": "datum['Temperature Anomaly'] > 0",
-            "value": "#4575b4"
+            "value": "#4f7cac"
           },
-          "value": "#d73027"
+          "value": "#db6763"
         },
         "tooltip": [
           {
